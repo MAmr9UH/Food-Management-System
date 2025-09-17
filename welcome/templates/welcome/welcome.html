@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+{%block css_files%}
+<link rel="stylesheet" href="{% static "welcome/welcome.css" %}">
+{%endblock %}
+
+{% block page_title %}
+Food Management System
+{% endblock %}
+
+
+
+
+{% block content %}
+  <!--  <h2>Options</h2>  -->
+    <ul>
+        {% for option in options %}
+            {% if option == "demo" %}
+                <li><a href="{% url 'demo' %}">{{ option|title }}</a></li>
+            {% elif option == "contact" %}
+                <li><a href="{% url 'contact' 'con' %}">{{ option|title }}</a></li>
+            {% else %}
+                <li>{{ option|title }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{%block css_files%}
+<link rel="stylesheet" href="{% static "welcome/welcome.css" %}">
+{%endblock %}
+
+
+
+{% block page_title %}
+Track Inventory
+{% endblock %}
+
+{% block title_page %}
+<h1>Welcome to the food world</h1>
+{% endblock %}
+
+{% block content %}
+{% include "welcome/includes/header.html" %}
+
+<header>
+    <h1>Track Your Inventory Smarter</h1>
+</header>
+{% endblock %}
+

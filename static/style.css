@@ -1,0 +1,140 @@
+/* General page setup */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #2c2c2c url("https://sdmntprsouthcentralus.oaiusercontent.com/files/00000000-9010-61f7-8f55-ba9b2a03d4c8/raw?se=2025-09-17T15%3A34%3A55Z&sp=r&sv=2024-08-04&sr=b&scid=e12e863a-c603-5db0-aa70-637e760010d1&skoid=60f2aa1f-3685-43ee-be37-d8c8d08d5a64&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-17T02%3A22%3A25Z&ske=2025-09-18T02%3A22%3A25Z&sks=b&skv=2024-08-04&sig=RmlSh1NvzEU8mJv0hupV3FLDH2xOZ0TFBXvE%2BS%2BhQWg%3D")
+        no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #f4f4f4;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #efede6;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #8bc34a;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 30px;
+}
+
+/* Options container - push lower */
+.options {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 900px;
+    margin: 80px auto 0; /* pushes them down */
+}
+
+/* Reset UL/LI */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    flex: 1;
+    text-align: center;
+}
+
+/* Fruit-style buttons */
+a {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    line-height: 160px; /* vertical centering */
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 50% 45% 50% 55% / 55% 50% 45% 50%; /* irregular "fruit-like" shape */
+    background: radial-gradient(circle at 30% 30%, #ff7043, #e64a19); /* orange fruit tone */
+    box-shadow: inset -4px -6px 10px rgba(0, 0, 0, 0.25),
+                0 6px 14px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Different color for Contact */
+li:last-child a {
+    background: radial-gradient(circle at 30% 30%, #8bc34a, #558b2f); /* green apple tone */
+}
+
+/* Hover effect */
+a:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: inset -4px -6px 12px rgba(0, 0, 0, 0.3),
+                0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Optional "stem" for fun */
+a::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 30px;
+    background: #4d3319;
+    border-radius: 6px;
+}
+
+/* Decorative food images */
+.food {
+    position: absolute;
+    width: 100px;  /* size of the food image */
+    height: auto;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* Position one on the left */
+.food-left {
+    top: 150px;
+    left: 40px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Position one on the right */
+.food-right {
+    top: 300px;
+    right: 40px;
+    animation: float 8s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
