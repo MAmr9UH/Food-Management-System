@@ -1,0 +1,64 @@
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "welcome/demo.css" %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body><div class="container mt-5">
+  <h2 class="mb-4 d-flex justify-content-between align-items-center">
+    Inventory
+    <a href="/add_Inventory" class="btn btn-success">
+      + Add Inventory
+    </a>
+  </h2>
+
+  {% if itemsx %}
+  <!-- Inventory Table -->
+  <table class="table table-bordered shadow-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Quantity</th>
+        <th>Expiry_date</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in itemsx %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.Current_Quantity }}</td>
+        <td>{{ item.expiry_date  }}</td>
+        <td>${{ item.Price }}</td>
+        <td>{{ item.status }}</td>
+        <td>
+          <a href="{% url 'edit_inventory' item.pk %}" class="btn btn-sm btn-warning">Edit</a>
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <!-- Empty State -->
+  <div class="empty-state shadow-sm text-center p-5 border rounded">
+    <img src="https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-flat/128/Cow-Face-Flat-icon.png" alt="Cow Icon" width="100">
+    <h4>No Inventory Items</h4>
+    <p>Your inventory is currently empty. Add items to start tracking stock levels and expiry dates.</p>
+  </div>
+  {% endif %}
+</div>
+

@@ -1,0 +1,65 @@
+/* General page spacing */
+body {
+    background: #f8fafc;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1e293b;
+  }
+  
+  /* Page heading */
+  h2 {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Inventory form */
+  form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  
+  form label {
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  
+  form input, form select {
+    border-radius: 8px;
+  }
+  
+  /* Buttons */
+  .btn-success {
+    background-color: #16a34a;
+    border: none;
+    font-weight: 600;
+  }
+  
+  .btn-success:hover {
+    background-color: #15803d;
+  }
+  
+  .btn-secondary {
+    background-color: #475569;
+    border: none;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #334155;
+  }
+  
+  /* Inventory table */
+  .table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .table thead {
+    background: #f1f5f9;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fafafa;
+  }
+  

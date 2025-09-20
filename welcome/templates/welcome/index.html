@@ -1,28 +1,139 @@
-
-{% extends "base.html" %}
-
 {% load static %}
 
 
 {%block css_files%}
-<link rel="stylesheet" href="{% static "welcome/welcome.css" %}">
+<link rel="stylesheet" href="{% static "welcome/demo.css" %}">
 {%endblock %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Management System</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-{% block page_title %}
-Track Inventory
-{% endblock %}
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-md-2 d-none d-md-block sidebar p-3">
+      <h4>FoodMS</h4>
+      <a href="#" class="active">Dashboard</a>
 
-{% block title_page %}
-<h1>Welcome to the food world</h1>
-{% endblock %}
+      
+      <a href='/Inventory'>Inventory</a>
+      <a href="#">Receiving</a>
+      <a href="#">Recipes & Menu</a>
+      <a href="#">Purchasing</a>
+      <hr>
+      <a href="#">Waste & Transfers</a>
+      <a href="#">Reports</a>
+      <hr>
+      <a href="#">Admin</a>
+    </nav>
 
-{% block content %}
-{% include "welcome/includes/header.html" %}
+    <!-- Main Content -->
+    <main class="col-md-10 ms-sm-auto px-4">
+      <h2 class="my-4">Food Management System</h2>
 
-<header>
-    <h1>Track Your Inventory Smarter</h1>
-</header>
-{% endblock %}
+      <!-- Alerts -->
+      <div class="alert alert-danger d-flex justify-content-between align-items-center">
 
+        <button class="btn btn-light btn-sm">View Items</button>
+      </div>
+
+      <div class="alert alert-warning d-flex justify-content-between align-items-center">
+
+        <button class="btn btn-light btn-sm">Create Order</button>
+      </div>
+
+      <!-- KPIs -->
+      <div class="row text-center mb-4">
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>COGS %</h5>
+     
+   
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>Waste %</h5>
+
+
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>Expiring Soon</h5>
+
+       
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>Stock Alerts</h5>
+ 
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Table -->
+<!-- Inventory Table -->
+<h4>Inventory Overview</h4>
+
+<!-- Big Add Inventory Button with Cow Icon -->
+<div class="text-center mb-4">
+  <a href="/Inventory_" class="btn btn-success btn-lg d-flex align-items-center justify-content-center gap-2" style="width: 260px; margin: 0 auto; border-radius: 12px; font-size: 1.2rem; font-weight: 600;">
+    <img src="https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-flat/128/Cow-Face-Flat-icon.png" alt="Cow" style="width: 40px; height: 40px;">
+    +Inventory
+  </a>
+</div>
+{% if itemsx %}
+<table class="table table-striped align-middle mt-3">
+  <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Location</th>
+      <th>Quantity</th>
+      <th>Expiry Date</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr>
+
+
+  </thead>
+  <tbody>
+    {%for item in itemsx%}
+    <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.location }}</td>
+        <td>{{ item.Current_Quantity }}</td>
+        <td>{{ item.expiry_date  }}</td>
+        <td>${{ item.Price }}</td>
+        <td>{{ item.status }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<!-- Empty State -->
+<div class="empty-state shadow-sm text-center p-5 border rounded">
+  <img src="https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-flat/128/Cow-Face-Flat-icon.png" alt="Cow Icon" width="100">
+  <h4>No Inventory Items</h4>
+  <p>Your inventory is currently empty. Add items to start tracking stock levels and expiry dates.</p>
+</div>
+{% endif %}
+</div>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
